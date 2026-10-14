@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aceitas? ❤️</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffc8dd;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+.card {
+  width: 85%;
+  padding: 25px 15px;
+  text-align: center;
+  background: #fff0f6;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px #d6338450;
+}
+.heart { font-size: 45px; }
+h1 { color: #d63384; font-size: 27px; }
+p { color: #8a285c; }
+#area {
+  position: relative;
+  height: 130px;
+  margin-top: 25px;
+}
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 22px;
+  font-size: 17px;
+  font-weight: bold;
+}
+#sim {
+  background: #ff4d8d;
+  color: white;
+  position: absolute;
+  left: 8%;
+  top: 15px;
+}
+#nao {
+  background: #fbb1c8;
+  color: #78244c;
+  position: absolute;
+  left: 55%;
+  top: 15px;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">💗</div>
+  <h1>Quer namorar comigo?</h1>
+  <p>Tenho uma perguntinha pra você...</p>
+  <div id="area">
+    <button id="sim">Sim ❤️</button>
+    <button id="nao">Não 😢</button>
+  </div>
+</div>
+<script>
+const sim = document.getElementById("sim");
+const nao = document.getElementById("nao");
+const area = document.getElementById("area");
+
+function fugir() {
+  const maxX = area.clientWidth - nao.offsetWidth;
+  const maxY = area.clientHeight - nao.offsetHeight;
+  nao.style.left = Math.random() * Math.max(0, maxX) + "px";
+  nao.style.top = Math.random() * Math.max(0, maxY) + "px";
+}
+
+nao.addEventListener("pointerenter", fugir);
+nao.addEventListener("click", fugir);
+nao.addEventListener("touchstart", fugir, {passive: true});
+
+sim.addEventListener("click", () => {
+  document.querySelector(".card").innerHTML =
+    '<div class="heart">💖🥹💖</div>' +
+    '<h1>EU TE AMO!</h1>' +
+    '<p>Você deixou meu coração muito feliz!</p>' +
+    '<p>Agora somos nós dois! ❤️</p>' +
+    '<div class="heart">💕🌹💕</div>';
+});
+</script>
+</body>
+</html>
